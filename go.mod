@@ -2,8 +2,9 @@ module github.com/tomaszandrzej/arangodb-go
 
 go 1.23.2
 
+require github.com/arangodb/go-driver/v2 v2.1.2
+
 require (
-	github.com/arangodb/go-driver/v2 v2.1.2 // indirect
 	github.com/arangodb/go-velocypack v0.0.0-20200318135517-5af53c29c67e // indirect
 	github.com/dchest/siphash v1.2.3 // indirect
 	github.com/google/uuid v1.6.0 // indirect
