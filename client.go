@@ -10,16 +10,18 @@ import (
 // Endpoint: The URL of the ArangoDB server.
 // SkipVerify: Whether to skip verification of the server's certificate.
 type Credentials struct {
-	Endpoint   string
+	Endpoints  []string
 	Username   string
 	Password   string
 	SkipVerify bool
 }
 
-func NewClient(c Credentials) (arangodb.Client, error) {
+type Client arangodb.Client
+
+func NewClient(c Credentials) (Client, error) {
 
 	// Create a connection
-	endpoint := connection.NewRoundRobinEndpoints([]string{c.Endpoint})
+	endpoint := connection.NewRoundRobinEndpoints(c.Endpoints)
 	conn := connection.NewHttp2Connection(
 		connection.DefaultHTTP2ConfigurationWrapper(endpoint, c.SkipVerify))
 
